@@ -1,3 +1,4 @@
 config.py
 venv
 bot.ipynb
+__pycache__
