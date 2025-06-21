@@ -15,14 +15,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     print("start handler")
     
     # удаляем историю диалога
-    with open(r'dialog.txt', 'w', encoding='utf-8') as file:
+    with open('dialog.txt', 'w', encoding='utf-8') as file:
         file.write("")
 
     # print(update.message.from_user.id, update.message.from_user.username)
 
     topic = get_random_line("dialog_topics.txt")
     
-    with open(r'prompts\welcome_phrase_prompt.txt', 'r', encoding='utf-8') as file:
+    with open('prompts/welcome_phrase_prompt.txt', 'r', encoding='utf-8') as file:
         welcome_prompt_txt = file.read()
     
     final_welcome_prompt = welcome_prompt_txt + topic
@@ -76,7 +76,7 @@ async def voice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         store_answer("User", transcript)
 
         #продолжение диалога
-        with open(r'prompts\next_dialog_phrase_prompt.txt', 'r', encoding='utf-8') as file:
+        with open('prompts/next_dialog_phrase_prompt.txt', 'r', encoding='utf-8') as file:
             next_phrase_prompt = file.read()
         
         dialog = get_current_dialog()
@@ -109,7 +109,7 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     store_answer("User", user_text)
 
     # продолжение диалога
-    with open(r'prompts\next_dialog_phrase_prompt.txt', 'r', encoding='utf-8') as file:
+    with open('prompts/next_dialog_phrase_prompt.txt', 'r', encoding='utf-8') as file:
         next_phrase_prompt = file.read()
     
     dialog = get_current_dialog()
@@ -137,7 +137,7 @@ async def feedback(update: Update, context: ContextTypes.DEFAULT_TYPE)-> None:
         "Sorry, there is no dialog with you to have feedback :(.\nText /start to start a dialog with me!"
     )
     else:
-        with open(r'prompts\feedback_prompt.txt', 'r', encoding='utf-8') as file:
+        with open('prompts/feedback_prompt.txt', 'r', encoding='utf-8') as file:
                 feedback_prompt = file.read()
         prompt = feedback_prompt + dialog + "You:\n"
 
