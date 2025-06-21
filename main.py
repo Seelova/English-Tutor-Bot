@@ -22,7 +22,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     topic = get_random_line("dialog_topics.txt")
     
-    with open('prompts\welcome_phrase_prompt.txt', 'r', encoding='utf-8') as file:
+    with open(r'prompts\welcome_phrase_prompt.txt', 'r', encoding='utf-8') as file:
         welcome_prompt_txt = file.read()
     
     final_welcome_prompt = welcome_prompt_txt + topic
